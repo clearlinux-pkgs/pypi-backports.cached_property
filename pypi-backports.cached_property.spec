@@ -4,12 +4,13 @@
 #
 Name     : pypi-backports.cached_property
 Version  : 1.0.1
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/4f/d8/fd7b8e24a207023e39b9c0cd607a9b3ba757552ec0d81b4328183961af2e/backports.cached-property-1.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/4f/d8/fd7b8e24a207023e39b9c0cd607a9b3ba757552ec0d81b4328183961af2e/backports.cached-property-1.0.1.tar.gz
 Summary  : cached_property() - computed once per instance, cached as attribute
 Group    : Development/Tools
 License  : MIT
+Requires: pypi-backports.cached_property-license = %{version}-%{release}
 Requires: pypi-backports.cached_property-python = %{version}-%{release}
 Requires: pypi-backports.cached_property-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -20,6 +21,14 @@ BuildRequires : pypi(wheel)
 
 %description
 =========================
+
+%package license
+Summary: license components for the pypi-backports.cached_property package.
+Group: Default
+
+%description license
+license components for the pypi-backports.cached_property package.
+
 
 %package python
 Summary: python components for the pypi-backports.cached_property package.
@@ -35,7 +44,6 @@ Summary: python3 components for the pypi-backports.cached_property package.
 Group: Default
 Requires: python3-core
 Provides: pypi(backports.cached_property)
-Requires: pypi(typing)
 
 %description python3
 python3 components for the pypi-backports.cached_property package.
@@ -50,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640196742
+export SOURCE_DATE_EPOCH=1640196979
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -65,6 +73,8 @@ python3 -m build --wheel --skip-dependency-check --no-isolation
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-backports.cached_property
+cp %{_builddir}/backports.cached-property-1.0.1/LICENSE %{buildroot}/usr/share/package-licenses/pypi-backports.cached_property/c207f008cff6a904809adc70e66baaad0656bcbf
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -72,6 +82,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-backports.cached_property/c207f008cff6a904809adc70e66baaad0656bcbf
 
 %files python
 %defattr(-,root,root,-)
