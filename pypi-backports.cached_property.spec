@@ -4,7 +4,7 @@
 #
 Name     : pypi-backports.cached_property
 Version  : 1.0.1
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/4f/d8/fd7b8e24a207023e39b9c0cd607a9b3ba757552ec0d81b4328183961af2e/backports.cached-property-1.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/4f/d8/fd7b8e24a207023e39b9c0cd607a9b3ba757552ec0d81b4328183961af2e/backports.cached-property-1.0.1.tar.gz
 Summary  : cached_property() - computed once per instance, cached as attribute
@@ -58,7 +58,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640196979
+export SOURCE_DATE_EPOCH=1640221062
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -79,6 +79,9 @@ pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+## Remove excluded files
+rm -f %{buildroot}*/usr/lib/python3.10/site-packages/backports/__init__.py
+rm -f %{buildroot}*/usr/lib/python3.10/site-packages/backports/__pycache__/__init__.cpython-310.pyc
 
 %files
 %defattr(-,root,root,-)
