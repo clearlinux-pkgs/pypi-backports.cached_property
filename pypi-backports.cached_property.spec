@@ -4,7 +4,7 @@
 #
 Name     : pypi-backports.cached_property
 Version  : 1.0.2
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/08/83/4cea5c665d2af765c02f7d8e8560b5918405c1d7d11ccfc60c4919c1cfd0/backports.cached-property-1.0.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/08/83/4cea5c665d2af765c02f7d8e8560b5918405c1d7d11ccfc60c4919c1cfd0/backports.cached-property-1.0.2.tar.gz
 Summary  : cached_property() - computed once per instance, cached as attribute
@@ -73,7 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655254641
+export SOURCE_DATE_EPOCH=1656360519
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -114,7 +114,7 @@ popd
 ## Remove excluded files
 rm -f %{buildroot}*/usr/lib/python3.10/site-packages/backports/__init__.py
 rm -f %{buildroot}*/usr/lib/python3.10/site-packages/backports/__pycache__/__init__.cpython-310.pyc
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
