@@ -4,7 +4,7 @@
 #
 Name     : pypi-backports.cached_property
 Version  : 1.0.2
-Release  : 10
+Release  : 11
 URL      : https://files.pythonhosted.org/packages/08/83/4cea5c665d2af765c02f7d8e8560b5918405c1d7d11ccfc60c4919c1cfd0/backports.cached-property-1.0.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/08/83/4cea5c665d2af765c02f7d8e8560b5918405c1d7d11ccfc60c4919c1cfd0/backports.cached-property-1.0.2.tar.gz
 Summary  : cached_property() - computed once per instance, cached as attribute
